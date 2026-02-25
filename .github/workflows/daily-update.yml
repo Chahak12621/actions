@@ -1,0 +1,21 @@
+name: Daily Repo Update
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Runs every day at 9:00 AM UTC
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 24f1000451@ds.study.iitm.ac.in - Make a daily commit
+        run: |
+          echo "Daily update $(date)" >> daily-update.txt
+          git config user.name "GitHub Actions"
+          git config user.email "24f1000451@ds.study.iitm.ac.in"
+          git add daily-update.txt
+          git commit -m "Automated daily update"
+          git push
