@@ -14,9 +14,9 @@ jobs:
 
       - name: 24f1000451@ds.study.iitm.ac.in - Make a daily commit
         run: |
-          echo "Daily update $(date)" >> daily-update.txt
+          echo "Daily update $(date '+%Y-%m-%d %H:%M:%S')" >> daily-update.txt
           git config user.name "GitHub Actions"
           git config user.email "24f1000451@ds.study.iitm.ac.in"
           git add daily-update.txt
-          git commit -m "Automated daily update"
+          git commit -m "Automated daily update" --allow-empty
           git push
